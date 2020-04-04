@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B04495FB23C2B5170068F422 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = B04495FA23C2B5170068F422 /* QGrid */; };
 		B04495FD23C2B54B0068F422 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FC23C2B54B0068F422 /* Weather.swift */; };
 		B04495FF23C63B5B0068F422 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FE23C63B5B0068F422 /* NetworkService.swift */; };
 		B044960223C63CBB0068F422 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B044960123C63CBB0068F422 /* Alamofire */; };
@@ -60,7 +59,6 @@
 			files = (
 				B08C1E5723D3816500B0EFAB /* ASCollectionView in Frameworks */,
 				B044960523C63D080068F422 /* SwiftyJSON in Frameworks */,
-				B04495FB23C2B5170068F422 /* QGrid in Frameworks */,
 				B08C1E4D23D3767700B0EFAB /* KingfisherSwiftUI in Frameworks */,
 				B044960223C63CBB0068F422 /* Alamofire in Frameworks */,
 			);
@@ -167,7 +165,6 @@
 			);
 			name = "SwiftUI-Weather";
 			packageProductDependencies = (
-				B04495FA23C2B5170068F422 /* QGrid */,
 				B044960123C63CBB0068F422 /* Alamofire */,
 				B044960423C63D080068F422 /* SwiftyJSON */,
 				B08C1E4C23D3767700B0EFAB /* KingfisherSwiftUI */,
@@ -202,7 +199,6 @@
 			);
 			mainGroup = B08FB3B723BD1B2600C6F529;
 			packageReferences = (
-				B04495F923C2B5170068F422 /* XCRemoteSwiftPackageReference "QGrid" */,
 				B044960023C63CBB0068F422 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B044960323C63D080068F422 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B08C1E4B23D3767700B0EFAB /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -446,14 +442,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B04495F923C2B5170068F422 /* XCRemoteSwiftPackageReference "QGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Q-Mobile/QGrid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 		B044960023C63CBB0068F422 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -489,11 +477,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B04495FA23C2B5170068F422 /* QGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B04495F923C2B5170068F422 /* XCRemoteSwiftPackageReference "QGrid" */;
-			productName = QGrid;
-		};
 		B044960123C63CBB0068F422 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B044960023C63CBB0068F422 /* XCRemoteSwiftPackageReference "Alamofire" */;

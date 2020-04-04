@@ -42,16 +42,18 @@ struct ForecastView: View {
 struct WeatherView: View {
     let weather: Weather
     
+    init(weather: Weather) {
+        self.weather = weather
+        print("Init called for \(DateFormatter.forecastFormat(for: self.weather.date))")
+    }
+    
     var body: some View {
         VStack {
             Text(String(format: "%.0f℃", weather.temperature))
             KFImage(weather.iconUrl)
             Text(DateFormatter.forecastFormat(for: weather.date))
                 .frame(minWidth: 150)
-                .onAppear {
-                    print(self.weather.date.timeIntervalSince1970)
-                    print(DateFormatter.forecastFormat(for: self.weather.date))
-            }
+                .onAppear { print("On Appear called for \(DateFormatter.forecastFormat(for: self.weather.date))") }
         }
     }
 }

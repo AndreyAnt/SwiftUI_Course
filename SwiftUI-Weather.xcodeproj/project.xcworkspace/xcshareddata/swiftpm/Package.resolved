@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "QGrid",
-        "repositoryURL": "https://github.com/Q-Mobile/QGrid",
-        "state": {
-          "branch": null,
-          "revision": "40607aec336a8097c94bcadb81762592d89073ac",
-          "version": "0.1.3"
-        }
-      },
-      {
         "package": "SwiftyJSON",
         "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
         "state": {

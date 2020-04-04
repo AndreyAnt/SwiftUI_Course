@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct CitiesView: View {
-//    @Binding var shouldShowMainView: Bool
     @State private var timer: Timer?
     @State private var cities: [City] = [
         City(name: "Kazan", imageName: "kazan"),
@@ -27,16 +26,10 @@ struct CitiesView: View {
         .onAppear(perform: addOrDeleteCity)
         .onDisappear(perform: invalidateTimer)
         .navigationBarTitle("Cities", displayMode: .inline)
-            // workaround
-//            .navigationBarItems(leading: MyBackButton(label: "Back") {
-//                print(self.shouldShowMainView)
-//                self.shouldShowMainView = false
-//            })
     }
     
     private func addOrDeleteCity() {
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            self.timer = timer
+        self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             Bool.random() ? self.addCity() : self.deleteCity()
         }
     }
@@ -57,21 +50,7 @@ struct CitiesView: View {
     }
     
     private func invalidateTimer() {
-        timer?.invalidate()
-    }
-}
-
-struct MyBackButton: View {
-    let label: String
-    let buttonAction: () -> Void
-    
-    var body: some View {
-        Button(action: buttonAction) {
-            HStack {
-                Image(systemName: "chevron.left")
-                Text(label)
-            }
-        }
+        timer!.invalidate()
     }
 }
 
