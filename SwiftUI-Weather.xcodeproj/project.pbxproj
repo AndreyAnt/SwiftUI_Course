@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B023FACF2438C143006CAA9B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B023FACE2438C143006CAA9B /* RealmSwift */; };
+		B023FB862438C334006CAA9B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB852438C334006CAA9B /* RealmService.swift */; };
+		B023FB892438C39A006CAA9B /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB882438C39A006CAA9B /* ForecastViewModel.swift */; };
+		B023FB8C2438C6C9006CAA9B /* ifLet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB8B2438C6C9006CAA9B /* ifLet.swift */; };
+		B023FC432438CC0E006CAA9B /* RealmAttachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FC422438CC0E006CAA9B /* RealmAttachable.swift */; };
 		B04495FD23C2B54B0068F422 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FC23C2B54B0068F422 /* Weather.swift */; };
 		B04495FF23C63B5B0068F422 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FE23C63B5B0068F422 /* NetworkService.swift */; };
 		B044960223C63CBB0068F422 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B044960123C63CBB0068F422 /* Alamofire */; };
@@ -31,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B023FB852438C334006CAA9B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		B023FB882438C39A006CAA9B /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
+		B023FB8B2438C6C9006CAA9B /* ifLet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ifLet.swift; sourceTree = "<group>"; };
+		B023FC422438CC0E006CAA9B /* RealmAttachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAttachable.swift; sourceTree = "<group>"; };
 		B04495FC23C2B54B0068F422 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		B04495FE23C63B5B0068F422 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B044960623C63D640068F422 /* BackendError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
@@ -60,6 +69,7 @@
 				B08C1E5723D3816500B0EFAB /* ASCollectionView in Frameworks */,
 				B044960523C63D080068F422 /* SwiftyJSON in Frameworks */,
 				B08C1E4D23D3767700B0EFAB /* KingfisherSwiftUI in Frameworks */,
+				B023FACF2438C143006CAA9B /* RealmSwift in Frameworks */,
 				B044960223C63CBB0068F422 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,12 +77,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B023FB872438C36C006CAA9B /* RealmService */ = {
+			isa = PBXGroup;
+			children = (
+				B023FB852438C334006CAA9B /* RealmService.swift */,
+				B023FC422438CC0E006CAA9B /* RealmAttachable.swift */,
+			);
+			path = RealmService;
+			sourceTree = "<group>";
+		};
+		B023FB8A2438C39F006CAA9B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B023FB882438C39A006CAA9B /* ForecastViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B0540CF22437E0F500C3883B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B08C1E4E23D3792F00B0EFAB /* DateFormatter+Ext.swift */,
 				B0540CEE2437DCC000C3883B /* Publishers+Ext.swift */,
 				B0540CF32437E12700C3883B /* UIApplication+Ext.swift */,
+				B023FB8B2438C6C9006CAA9B /* ifLet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -109,12 +137,14 @@
 				B08FB3C523BD1B2600C6F529 /* SceneDelegate.swift */,
 				B08FB3FE23C0CF2100C6F529 /* Model */,
 				B08FB3FB23C0CEEE00C6F529 /* View */,
+				B023FB8A2438C39F006CAA9B /* ViewModel */,
 				B08FB3C923BD1B2800C6F529 /* Assets.xcassets */,
 				B08FB3CE23BD1B2800C6F529 /* LaunchScreen.storyboard */,
 				B08FB3D123BD1B2800C6F529 /* Info.plist */,
 				B08FB3CB23BD1B2800C6F529 /* Preview Content */,
 				B0540CF22437E0F500C3883B /* Extensions */,
 				B0540CF52437E12C00C3883B /* ViewModifiers */,
+				B023FB872438C36C006CAA9B /* RealmService */,
 			);
 			path = "SwiftUI-Weather";
 			sourceTree = "<group>";
@@ -169,6 +199,7 @@
 				B044960423C63D080068F422 /* SwiftyJSON */,
 				B08C1E4C23D3767700B0EFAB /* KingfisherSwiftUI */,
 				B08C1E5623D3816500B0EFAB /* ASCollectionView */,
+				B023FACE2438C143006CAA9B /* RealmSwift */,
 			);
 			productName = "SwiftUI-Weather";
 			productReference = B08FB3C023BD1B2600C6F529 /* SwiftUI-Weather.app */;
@@ -203,6 +234,7 @@
 				B044960323C63D080068F422 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B08C1E4B23D3767700B0EFAB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B08C1E5523D3816500B0EFAB /* XCRemoteSwiftPackageReference "ASCollectionView" */,
+				B023FACD2438C143006CAA9B /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = B08FB3C123BD1B2600C6F529 /* Products */;
 			projectDirPath = "";
@@ -232,10 +264,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B04495FD23C2B54B0068F422 /* Weather.swift in Sources */,
+				B023FB8C2438C6C9006CAA9B /* ifLet.swift in Sources */,
 				B08FB3C423BD1B2600C6F529 /* AppDelegate.swift in Sources */,
 				B0540CEF2437DCC000C3883B /* Publishers+Ext.swift in Sources */,
 				B08FB3FD23C0CEFF00C6F529 /* City.swift in Sources */,
+				B023FB862438C334006CAA9B /* RealmService.swift in Sources */,
+				B023FB892438C39A006CAA9B /* ForecastViewModel.swift in Sources */,
 				B08C1E4F23D3792F00B0EFAB /* DateFormatter+Ext.swift in Sources */,
+				B023FC432438CC0E006CAA9B /* RealmAttachable.swift in Sources */,
 				B08FB40023C0D86700C6F529 /* ContainerView.swift in Sources */,
 				B04495FF23C63B5B0068F422 /* NetworkService.swift in Sources */,
 				B0540CF12437E0BF00C3883B /* KeyboardAdaptive.swift in Sources */,
@@ -442,6 +478,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B023FACD2438C143006CAA9B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
 		B044960023C63CBB0068F422 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -477,6 +521,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B023FACE2438C143006CAA9B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B023FACD2438C143006CAA9B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		B044960123C63CBB0068F422 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B044960023C63CBB0068F422 /* XCRemoteSwiftPackageReference "Alamofire" */;

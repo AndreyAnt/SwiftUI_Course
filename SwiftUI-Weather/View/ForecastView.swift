@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import QGrid
 import KingfisherSwiftUI
 import ASCollectionView
 
@@ -15,27 +14,30 @@ struct ForecastView: View {
     let city: City
     let networkService = NetworkService()
     
-    @State var weathers = [Weather]()
+    //    @State var weathers = [Weather]()
+    @ObservedObject var viewModel: ForecastViewModel = .init()
     
     var body: some View {
-        ASCollectionView(data: weathers) { (weather, context) in
+//        ifLet(viewModel.weathers) { weathers in
+        ASCollectionView(data: viewModel.detachedWeathers) { (weather, context) in
             return WeatherView(weather: weather)
         }.layout {
             .grid(
-            layoutMode: .fixedNumberOfColumns(2),
-            itemSpacing: 0,
-            lineSpacing: 16)
+                layoutMode: .fixedNumberOfColumns(2),
+                itemSpacing: 0,
+                lineSpacing: 16)
         }.onAppear {
             print("Forecast requested")
             self.networkService.forecast(for: self.city.name) { result in
                 switch result {
                 case .success(let weathers):
-                    self.weathers = weathers
+                    try? RealmService.save(items: weathers)
                 case .failure(let error):
                     print(error)
                 }
             }
         }
+//        }
     }
 }
 

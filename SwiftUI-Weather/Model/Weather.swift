@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 //class Weather: Identifiable {
 //    internal init(temperature: Double, date: Date, icon: String) {
 //        self.temperature = temperature
@@ -21,17 +22,17 @@ import SwiftyJSON
 //    let icon: String
 //}
 
-class Weather: Identifiable {
-    var id: String = ""
-    var date: Date = Date.distantPast
-    var temperature: Double = 0
-    var pressure: Double = 0
+class Weather: Object, Identifiable {
+    @objc dynamic var id: String = ""
+    @objc dynamic var date: Date = Date.distantPast
+    @objc dynamic var temperature: Double = 0
+    @objc dynamic var pressure: Double = 0
     
-    var icon: String = ""
+    @objc dynamic var icon: String = ""
     var iconUrl: URL? {
         URL(string: "https://api.openweathermap.org/img/w/\(icon).png")
     }
-    var descr: String = ""
+    @objc dynamic var descr: String = ""
     
 //    var cities = LinkingObjects(fromType: City.self, property: "weathers")
     
@@ -55,7 +56,7 @@ class Weather: Identifiable {
         self.temperature = temperature
     }
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
