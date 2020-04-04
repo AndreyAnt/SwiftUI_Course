@@ -10,8 +10,8 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
-    @State private var login = ""
-    @State private var password = ""
+    @State private var login = "bar"
+    @State private var password = "foo"
     @State private var keyboardHeight: CGFloat = 0
     @State private var showIncorrectCredentialsWarning = false
     @Binding var isUserLoggedIn: Bool
