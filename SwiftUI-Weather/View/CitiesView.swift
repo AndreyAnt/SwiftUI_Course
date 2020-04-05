@@ -19,7 +19,7 @@ struct CitiesView: View {
     
     var body: some View {
         List(cities.sorted(by: { $0.name < $1.name })) { city in
-            NavigationLink(destination: ForecastView(city: city)) {
+            NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city))) {
                 CityView(city: city)
             }
         }

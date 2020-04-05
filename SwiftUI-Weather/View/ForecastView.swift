@@ -11,11 +11,14 @@ import KingfisherSwiftUI
 import ASCollectionView
 
 struct ForecastView: View {
-    let city: City
     let networkService = NetworkService()
     
     //    @State var weathers = [Weather]()
-    @ObservedObject var viewModel: ForecastViewModel = .init()
+    @ObservedObject var viewModel: ForecastViewModel
+    
+    init(viewModel: ForecastViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
 //        ifLet(viewModel.weathers) { weathers in
@@ -28,7 +31,7 @@ struct ForecastView: View {
                 lineSpacing: 16)
         }.onAppear {
             print("Forecast requested")
-            self.networkService.forecast(for: self.city.name) { result in
+            self.networkService.forecast(for: self.viewModel.city.name) { result in
                 switch result {
                 case .success(let weathers):
                     try? RealmService.save(items: weathers)
@@ -38,6 +41,7 @@ struct ForecastView: View {
             }
         }
 //        }
+            .navigationBarTitle(viewModel.city.name)
     }
 }
 
@@ -62,7 +66,7 @@ struct WeatherView: View {
 
 struct ForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        ForecastView(city: City(name: "Kazan", imageName: "kazan"))
+        ForecastView(viewModel: ForecastViewModel(city: City(name: "Kazan", imageName: "kazan")))
     }
 }
 
