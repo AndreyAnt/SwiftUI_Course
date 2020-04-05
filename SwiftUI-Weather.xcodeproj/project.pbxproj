@@ -11,7 +11,7 @@
 		B023FB862438C334006CAA9B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB852438C334006CAA9B /* RealmService.swift */; };
 		B023FB892438C39A006CAA9B /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB882438C39A006CAA9B /* ForecastViewModel.swift */; };
 		B023FB8C2438C6C9006CAA9B /* ifLet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FB8B2438C6C9006CAA9B /* ifLet.swift */; };
-		B023FC432438CC0E006CAA9B /* RealmAttachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FC422438CC0E006CAA9B /* RealmAttachable.swift */; };
+		B023FC432438CC0E006CAA9B /* DetachableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023FC422438CC0E006CAA9B /* DetachableObject.swift */; };
 		B04495FD23C2B54B0068F422 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FC23C2B54B0068F422 /* Weather.swift */; };
 		B04495FF23C63B5B0068F422 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04495FE23C63B5B0068F422 /* NetworkService.swift */; };
 		B044960223C63CBB0068F422 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B044960123C63CBB0068F422 /* Alamofire */; };
@@ -39,7 +39,7 @@
 		B023FB852438C334006CAA9B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		B023FB882438C39A006CAA9B /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		B023FB8B2438C6C9006CAA9B /* ifLet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ifLet.swift; sourceTree = "<group>"; };
-		B023FC422438CC0E006CAA9B /* RealmAttachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAttachable.swift; sourceTree = "<group>"; };
+		B023FC422438CC0E006CAA9B /* DetachableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetachableObject.swift; sourceTree = "<group>"; };
 		B04495FC23C2B54B0068F422 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		B04495FE23C63B5B0068F422 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B044960623C63D640068F422 /* BackendError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B023FB852438C334006CAA9B /* RealmService.swift */,
-				B023FC422438CC0E006CAA9B /* RealmAttachable.swift */,
+				B023FC422438CC0E006CAA9B /* DetachableObject.swift */,
 			);
 			path = RealmService;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 				B023FB862438C334006CAA9B /* RealmService.swift in Sources */,
 				B023FB892438C39A006CAA9B /* ForecastViewModel.swift in Sources */,
 				B08C1E4F23D3792F00B0EFAB /* DateFormatter+Ext.swift in Sources */,
-				B023FC432438CC0E006CAA9B /* RealmAttachable.swift in Sources */,
+				B023FC432438CC0E006CAA9B /* DetachableObject.swift in Sources */,
 				B08FB40023C0D86700C6F529 /* ContainerView.swift in Sources */,
 				B04495FF23C63B5B0068F422 /* NetworkService.swift in Sources */,
 				B0540CF12437E0BF00C3883B /* KeyboardAdaptive.swift in Sources */,

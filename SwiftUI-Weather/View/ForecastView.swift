@@ -69,6 +69,3 @@ struct ForecastView_Previews: PreviewProvider {
         ForecastView(viewModel: ForecastViewModel(city: City(name: "Kazan", imageName: "kazan")))
     }
 }
-
-
-

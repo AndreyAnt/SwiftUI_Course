@@ -33,14 +33,13 @@ class RealmService {
         return realm.objects(type)
     }
     
-    /// Функция получения массива всех объектов указанного типа из хранилища
     static func get<T: Object>(
         _ type: T.Type,
         configuration: Realm.Configuration = deleteIfMigration
     ) throws -> Array<T> {
         print(configuration.fileURL ?? "")
         let realm = try Realm(configuration: configuration)
-        return realm.objects(type).map { $0.unmanagedCopy() }
+        return realm.objects(type).map { $0.detached() }
     }
     
     static func delete<T: Object>(

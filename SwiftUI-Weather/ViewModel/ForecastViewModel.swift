@@ -17,7 +17,7 @@ class ForecastViewModel: ObservableObject {
     // Результаты запроса в БД
     private(set) lazy var weathers: Results<Weather>? = try? RealmService.get(Weather.self).filter("id CONTAINS[cd] %@", city.name)
     // Копия результата запроса в БД
-    var detachedWeathers: [Weather] { weathers?.map { $0.unmanagedCopy() } ?? [] }
+    var detachedWeathers: [Weather] { weathers?.map { $0.detached() } ?? [] }
     // Токен-обсервер БД
     private var notificationToken: NotificationToken?
     
