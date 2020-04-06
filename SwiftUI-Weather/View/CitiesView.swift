@@ -59,10 +59,14 @@ struct AddCityView: View {
                 Button("Ok") {
                     try? City.create(in: self.managedObjectContext, name: self.cityname, imageName: nil)
                     self.presentation.wrappedValue.dismiss()
-                }.frame(width: screenWidth/6)
+                }
+                .frame(width: screenWidth/6)
+                .disabled(cityname.isEmpty)
+                
                 Button("Cancel") {
                     self.presentation.wrappedValue.dismiss()
-                }.frame(width: screenWidth/6)
+                }
+                .frame(width: screenWidth/6)
             }
         }
     }
