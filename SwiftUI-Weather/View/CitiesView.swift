@@ -16,15 +16,16 @@ struct CitiesView: View {
         City(name: "Vladivostok", imageName: "vladivostok"),
         City(name: "Yaroslavl", imageName: "yaroslavl")
     ]
+    private let weatherService = NetworkService()
     
     var body: some View {
         List(cities.sorted(by: { $0.name < $1.name })) { city in
-            NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city))) {
+            NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city, weatherService: self.weatherService, realmService: RealmService()))) {
                 CityView(city: city)
             }
         }
-        .onAppear(perform: addOrDeleteCity)
-        .onDisappear(perform: invalidateTimer)
+//        .onAppear(perform: addOrDeleteCity)
+//        .onDisappear(perform: invalidateTimer)
         .navigationBarTitle("Cities", displayMode: .inline)
     }
     

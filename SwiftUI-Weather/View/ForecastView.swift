@@ -11,8 +11,6 @@ import KingfisherSwiftUI
 import ASCollectionView
 
 struct ForecastView: View {
-    let networkService = NetworkService()
-    
     //    @State var weathers = [Weather]()
     @ObservedObject var viewModel: ForecastViewModel
     
@@ -21,7 +19,6 @@ struct ForecastView: View {
     }
     
     var body: some View {
-//        ifLet(viewModel.weathers) { weathers in
         ASCollectionView(data: viewModel.detachedWeathers) { (weather, context) in
             return WeatherView(weather: weather)
         }.layout {
@@ -29,19 +26,9 @@ struct ForecastView: View {
                 layoutMode: .fixedNumberOfColumns(2),
                 itemSpacing: 0,
                 lineSpacing: 16)
-        }.onAppear {
-            print("Forecast requested")
-            self.networkService.forecast(for: self.viewModel.city.name) { result in
-                switch result {
-                case .success(let weathers):
-                    try? RealmService.save(items: weathers)
-                case .failure(let error):
-                    print(error)
-                }
-            }
         }
-//        }
-            .navigationBarTitle(viewModel.city.name)
+        .onAppear(perform: viewModel.fetchForecast)
+        .navigationBarTitle(viewModel.city.name)
     }
 }
 
@@ -50,22 +37,17 @@ struct WeatherView: View {
     
     init(weather: Weather) {
         self.weather = weather
-        print("Init called for \(DateFormatter.forecastFormat(for: self.weather.date))")
     }
     
     var body: some View {
-        VStack {
-            Text(String(format: "%.0f℃", weather.temperature))
-            KFImage(weather.iconUrl)
-            Text(DateFormatter.forecastFormat(for: weather.date))
-                .frame(minWidth: 150)
-                .onAppear { print("On Appear called for \(DateFormatter.forecastFormat(for: self.weather.date))") }
+        return GeometryReader { proxy in
+            VStack {
+                Text(String(format: "%.0f℃", self.weather.temperature))
+                KFImage(self.weather.iconUrl)
+                    .cancelOnDisappear(true)
+                Text(DateFormatter.forecastFormat(for: self.weather.date))
+                    .frame(width: proxy.size.width)
+            }
         }
-    }
-}
-
-struct ForecastView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForecastView(viewModel: ForecastViewModel(city: City(name: "Kazan", imageName: "kazan")))
     }
 }

@@ -10,7 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class NetworkService {
+protocol WeatherService {
+    func forecast(for city: String, completion: ((Swift.Result<[Weather], Error>) -> Void)?)
+}
+
+class NetworkService: WeatherService {
     static let session: SessionManager = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 20
