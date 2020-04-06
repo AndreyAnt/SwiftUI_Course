@@ -11,22 +11,17 @@ import CoreData
 
 @objc(City)
 public class City: NSManagedObject, Identifiable {
-//    static func == (lhs: City, rhs: City) -> Bool {
-//        lhs.id == rhs.id
-//    }
-    
-//    internal init(name: String, imageName: String) {
-//        self.name = name
-//        self.imageName = imageName
-//    }
-    
-//    let id: UUID = UUID()
-//    let name: String
-//    let imageName: String
-    
     @NSManaged public var id: UUID
     @NSManaged public var name: String 
     @NSManaged public var imageName: String
+    
+    @nonobjc public class func create(in context: NSManagedObjectContext, name: String, imageName: String?) throws {
+        let city = City(context: context)
+        city.name = name
+        city.id = UUID()
+        city.imageName = imageName ?? "default"
+        try context.save()
+    }
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<City> {
         return NSFetchRequest<City>(entityName: "City")

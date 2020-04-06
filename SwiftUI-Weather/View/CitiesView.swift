@@ -9,51 +9,23 @@
 import SwiftUI
 
 struct CitiesView: View {
-    @State private var timer: Timer?
-//    @State private var cities: [City] = []
-    @FetchRequest(entity: City.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \City.name, ascending: false)], predicate: nil, animation: .default) var cities: FetchedResults<City>
+    @State private var showingAddCityModal: Bool = false
+    @FetchRequest(entity: City.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \City.name, ascending: false)], predicate: nil, animation: .easeInOut) var cities: FetchedResults<City>
     @Environment(\.managedObjectContext) var managedObjectContext
-//        City(name: "Kazan", imageName: "kazan"),
-//        City(name: "Cheboksary", imageName: "cheboksary"),
-//        City(name: "Vladivostok", imageName: "vladivostok"),
-//        City(name: "Yaroslavl", imageName: "yaroslavl")
-//    ]
+    
     private let weatherService = NetworkService()
+    private let realmService = RealmService()
     
     var body: some View {
         List(cities) { city in
-            NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city, weatherService: self.weatherService, realmService: RealmService()))) {
+            NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city, weatherService: self.weatherService, realmService: self.realmService))) {
                 CityView(city: city)
             }
         }
-//        .onAppear(perform: addOrDeleteCity)
-//        .onDisappear(perform: invalidateTimer)
         .navigationBarTitle("Cities", displayMode: .inline)
-    }
-    
-//    private func addOrDeleteCity() {
-//        self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-//            Bool.random() ? self.addCity() : self.deleteCity()
-//        }
-//    }
-    
-    private func addCity() {
-//        guard let city = [
-//            City(name: "Kazan", imageName: "kazan"),
-//            City(name: "Cheboksary", imageName: "cheboksary"),
-//            City(name: "Vladivostok", imageName: "vladivostok"),
-//            City(name: "Yaroslavl", imageName: "yaroslavl")
-//        ].randomElement() else { return }
-//        cities.append(city)
-    }
-    
-//    private func deleteCity() {
-//        guard let city = cities.randomElement() else { return }
-//        cities.removeAll { $0 == city }
-//    }
-    
-    private func invalidateTimer() {
-        timer!.invalidate()
+        .navigationBarItems(trailing: Button(action: { self.showingAddCityModal.toggle() },
+                                             label: { Image(systemName: "plus") }))
+            .sheet(isPresented: $showingAddCityModal) { AddCityView().environment(\.managedObjectContext, self.managedObjectContext) }
     }
 }
 
@@ -68,6 +40,30 @@ struct CityView: View {
                 .frame(width: 100, height: 100, alignment: .leading)
                 .padding()
             Text(city.name)
+        }
+    }
+}
+
+struct AddCityView: View {
+    @Environment(\.presentationMode) var presentation
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State var cityname: String = ""
+    
+    private let screenWidth = UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.frame.width ?? 0
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Add new city:")
+            TextField("name", text: $cityname).textFieldStyle(RoundedBorderTextFieldStyle()).frame(width: screenWidth/3)
+            HStack(spacing: 0) {
+                Button("Ok") {
+                    try? City.create(in: self.managedObjectContext, name: self.cityname, imageName: nil)
+                    self.presentation.wrappedValue.dismiss()
+                }.frame(width: screenWidth/6)
+                Button("Cancel") {
+                    self.presentation.wrappedValue.dismiss()
+                }.frame(width: screenWidth/6)
+            }
         }
     }
 }
