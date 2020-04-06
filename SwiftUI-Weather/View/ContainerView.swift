@@ -16,7 +16,8 @@ struct ContainerView: View {
             HStack {
                 LoginView(isUserLoggedIn: $shouldShowMainView)
                 //MARK: - NAVIGATION LINKS
-                NavigationLink(destination: CitiesView(), isActive: $shouldShowMainView) {
+                NavigationLink(destination: CitiesView(),
+                               isActive: $shouldShowMainView) {
                     EmptyView()
                 }
             }

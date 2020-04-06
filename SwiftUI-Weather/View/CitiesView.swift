@@ -10,16 +10,18 @@ import SwiftUI
 
 struct CitiesView: View {
     @State private var timer: Timer?
-    @State private var cities: [City] = [
-        City(name: "Kazan", imageName: "kazan"),
-        City(name: "Cheboksary", imageName: "cheboksary"),
-        City(name: "Vladivostok", imageName: "vladivostok"),
-        City(name: "Yaroslavl", imageName: "yaroslavl")
-    ]
+//    @State private var cities: [City] = []
+    @FetchRequest(entity: City.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \City.name, ascending: false)], predicate: nil, animation: .default) var cities: FetchedResults<City>
+    @Environment(\.managedObjectContext) var managedObjectContext
+//        City(name: "Kazan", imageName: "kazan"),
+//        City(name: "Cheboksary", imageName: "cheboksary"),
+//        City(name: "Vladivostok", imageName: "vladivostok"),
+//        City(name: "Yaroslavl", imageName: "yaroslavl")
+//    ]
     private let weatherService = NetworkService()
     
     var body: some View {
-        List(cities.sorted(by: { $0.name < $1.name })) { city in
+        List(cities) { city in
             NavigationLink(destination: ForecastView(viewModel: ForecastViewModel(city: city, weatherService: self.weatherService, realmService: RealmService()))) {
                 CityView(city: city)
             }
@@ -29,26 +31,26 @@ struct CitiesView: View {
         .navigationBarTitle("Cities", displayMode: .inline)
     }
     
-    private func addOrDeleteCity() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            Bool.random() ? self.addCity() : self.deleteCity()
-        }
-    }
+//    private func addOrDeleteCity() {
+//        self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+//            Bool.random() ? self.addCity() : self.deleteCity()
+//        }
+//    }
     
     private func addCity() {
-        guard let city = [
-            City(name: "Kazan", imageName: "kazan"),
-            City(name: "Cheboksary", imageName: "cheboksary"),
-            City(name: "Vladivostok", imageName: "vladivostok"),
-            City(name: "Yaroslavl", imageName: "yaroslavl")
-        ].randomElement() else { return }
-        cities.append(city)
+//        guard let city = [
+//            City(name: "Kazan", imageName: "kazan"),
+//            City(name: "Cheboksary", imageName: "cheboksary"),
+//            City(name: "Vladivostok", imageName: "vladivostok"),
+//            City(name: "Yaroslavl", imageName: "yaroslavl")
+//        ].randomElement() else { return }
+//        cities.append(city)
     }
     
-    private func deleteCity() {
-        guard let city = cities.randomElement() else { return }
-        cities.removeAll { $0 == city }
-    }
+//    private func deleteCity() {
+//        guard let city = cities.randomElement() else { return }
+//        cities.removeAll { $0 == city }
+//    }
     
     private func invalidateTimer() {
         timer!.invalidate()

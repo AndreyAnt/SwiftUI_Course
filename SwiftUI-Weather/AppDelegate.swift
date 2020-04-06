@@ -12,6 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+//        let manager = CoreDataService(modelName: "City")
+//        let city = City(context: manager.context)
+//        city.name = "Omsk"
+//        city.id = UUID()
+//        city.imageName = "omsk"
+//        try? manager.saveContext()
+        
         // Override point for customization after application launch.
         return true
     }
